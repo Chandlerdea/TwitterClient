@@ -14,7 +14,7 @@ final class FeedDataSource: NSObject, TwitterClient {
     
     private static let dateFormatter: DateFormatter = {
         let formatter: DateFormatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy"
+        formatter.dateFormat = "MM/dd/yy"
         return formatter
     }()
     
@@ -52,7 +52,7 @@ extension FeedDataSource: UITableViewDataSource {
         }
         let tweet: Tweet = self.tweets[indexPath.row]
         cell.nameLabel.text = tweet.author.name
-        cell.handleLabel.text = tweet.author.handle
+        cell.handleLabel.text = "@\(tweet.author.handle)"
         cell.contentLabel.attributedText = tweet.attributedText
         cell.timeElapsedLabel.text = tweet.createdAt.flatMap(type(of: self).dateFormatter.string(from:))
         return cell
