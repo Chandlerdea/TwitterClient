@@ -1,13 +1,13 @@
 //
 //  HTTPMethodTests.swift
-//  ReactiveSwiftDemoTests
+//  MVCArchitectureDemoTests
 //
 //  Created by Chandler De Angelis on 4/17/19.
 //  Copyright © 2019 Chandlerdea LLC. All rights reserved.
 //
 
 import XCTest
-@testable import ReactiveSwiftDemo
+@testable import MVCArchitectureDemo
 
 class HTTPMethodTests: XCTestCase {
 
