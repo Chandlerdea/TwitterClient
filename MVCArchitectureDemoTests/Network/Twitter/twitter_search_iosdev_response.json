@@ -1,0 +1,138 @@
+{
+    "statuses": [
+        {
+            "created_at": "Wed Apr 17 23:06:05 +0000 2019",
+            "id": 1118651875044286464,
+            "id_str": "1118651875044286464",
+            "text": "RT 100xcode: RT @_swolecat: Just wrapped up Day 46 of #100DaysOfSwift. I'm having a lot of fun with SpriteKit; I ha\u2026 https:\/\/t.co\/i6s9eDdcno",
+            "truncated": true,
+            "entities": {
+                "hashtags": [
+                    {
+                        "text": "100DaysOfSwift",
+                        "indices": [
+                            54,
+                            69
+                        ]
+                    }
+                ],
+                "symbols": [],
+                "user_mentions": [
+                    {
+                        "screen_name": "_swolecat",
+                        "name": "koty",
+                        "id": 84176880,
+                        "id_str": "84176880",
+                        "indices": [
+                            16,
+                            26
+                        ]
+                    }
+                ],
+                "urls": [
+                    {
+                        "url": "https:\/\/t.co\/i6s9eDdcno",
+                        "expanded_url": "https:\/\/twitter.com\/i\/web\/status\/1118651875044286464",
+                        "display_url": "twitter.com\/i\/web\/status\/1\u2026",
+                        "indices": [
+                            117,
+                            140
+                        ]
+                    }
+                ]
+            },
+            "metadata": {
+                "iso_language_code": "en",
+                "result_type": "recent"
+            },
+            "source": "\u003ca href=\"https:\/\/ifttt.com\" rel=\"nofollow\"\u003eIFTTT\u003c\/a\u003e",
+            "in_reply_to_status_id": null,
+            "in_reply_to_status_id_str": null,
+            "in_reply_to_user_id": null,
+            "in_reply_to_user_id_str": null,
+            "in_reply_to_screen_name": null,
+            "user": {
+                "id": 219109223,
+                "id_str": "219109223",
+                "name": "Klaus",
+                "screen_name": "DevAspirerKlaus",
+                "location": "Brazil",
+                "description": "Self-teaching coder enthusiast | Obsessed for reading and learning | An 83's consequence #codenewbie #frontend #python",
+                "url": "https:\/\/t.co\/nXs58GmND7",
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "https:\/\/t.co\/nXs58GmND7",
+                                "expanded_url": "http:\/\/devaspirerklaus.github.io",
+                                "display_url": "devaspirerklaus.github.io",
+                                "indices": [
+                                    0,
+                                    23
+                                ]
+                            }
+                        ]
+                    },
+                    "description": {
+                        "urls": []
+                    }
+                },
+                "protected": false,
+                "followers_count": 666,
+                "friends_count": 4984,
+                "listed_count": 3,
+                "created_at": "Tue Nov 23 23:23:05 +0000 2010",
+                "favourites_count": 4598,
+                "utc_offset": null,
+                "time_zone": null,
+                "geo_enabled": false,
+                "verified": false,
+                "statuses_count": 612,
+                "lang": "en",
+                "contributors_enabled": false,
+                "is_translator": false,
+                "is_translation_enabled": false,
+                "profile_background_color": "C0DEED",
+                "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+                "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+                "profile_background_tile": false,
+                "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/1001111843757330432\/AHl5HYXx_normal.jpg",
+                "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/1001111843757330432\/AHl5HYXx_normal.jpg",
+                "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/219109223\/1527476130",
+                "profile_link_color": "1DA1F2",
+                "profile_sidebar_border_color": "C0DEED",
+                "profile_sidebar_fill_color": "DDEEF6",
+                "profile_text_color": "333333",
+                "profile_use_background_image": true,
+                "has_extended_profile": false,
+                "default_profile": true,
+                "default_profile_image": false,
+                "following": false,
+                "follow_request_sent": false,
+                "notifications": false,
+                "translator_type": "none"
+            },
+            "geo": null,
+            "coordinates": null,
+            "place": null,
+            "contributors": null,
+            "is_quote_status": false,
+            "retweet_count": 0,
+            "favorite_count": 0,
+            "favorited": false,
+            "retweeted": false,
+            "lang": "en"
+        }
+    ],
+    "search_metadata": {
+        "completed_in": 0.017,
+        "max_id": 1118651875044286464,
+        "max_id_str": "1118651875044286464",
+        "next_results": "?max_id=1118651875044286463&q=iosdev&count=1&include_entities=1",
+        "query": "iosdev",
+        "refresh_url": "?since_id=1118651875044286464&q=iosdev&include_entities=1",
+        "count": 1,
+        "since_id": 0,
+        "since_id_str": "0"
+    }
+}
