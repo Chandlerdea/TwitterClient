@@ -59,6 +59,13 @@ class HTTPRequestBuilder {
     }
     
     @discardableResult
+    func setAuthorizationToken(_ token: String) -> HTTPRequestBuilder {
+        let result: HTTPRequestBuilder = self
+        result.setHeader(.authorization(token))
+        return result
+    }
+    
+    @discardableResult
     func setBody(_ body: Data) -> HTTPRequestBuilder {
         let result: HTTPRequestBuilder = self
         result.body = body

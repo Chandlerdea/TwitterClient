@@ -30,21 +30,32 @@ struct Tweet: Decodable, Equatable {
     }()
     
     let id: Int
-    let text: String
+    let text: String?
+    var fullText: String?
     let userMentions: [UserMention]
     let author: User
     let createdAt: Date?
     
-    var attributedText: NSAttributedString {
-        return TweetAttributedStringBuilder(tweet: self).insertMentionAttributes()
-                                                        .insertHashtagAttributes()
-                                                        .insertLinkAttributes()
-                                                        .build()
+    var attributedText: NSAttributedString? {
+        return TweetAttributedStringBuilder(tweet: self)?.insertMentionAttributes()
+                                                         .insertHashtagAttributes()
+                                                         .insertLinkAttributes()
+                                                         .build()
+    }
+    
+    var attributedFullText: NSAttributedString? {
+        return self.fullText.flatMap(NSAttributedString.init(string:))
+        /*
+        return TweetAttributedStringBuilder(tweet: self)?.insertMentionAttributes()
+                                                         .insertHashtagAttributes()
+                                                         .insertLinkAttributes()
+                                                         .build()*/
     }
     
     enum CodingKeys: String, CodingKey {
         case id
         case text
+        case fullText = "full_text"
         case author = "user"
         case createdAtString = "created_at"
         case entities
@@ -64,7 +75,8 @@ struct Tweet: Decodable, Equatable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         self.id = try container.decode(Int.self, forKey: .id)
-        self.text = try container.decode(String.self, forKey: .text)
+        self.text = try container.decodeIfPresent(String.self, forKey: .text)
+        self.fullText = try container.decodeIfPresent(String.self, forKey: .fullText)
         self.author = try container.decode(User.self, forKey: .author)
         
         let entitiesContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .entities)

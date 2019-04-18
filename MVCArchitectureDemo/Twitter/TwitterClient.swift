@@ -1,6 +1,6 @@
 //
 //  TwitterClient.swift
-//  ReactiveSwiftDemo
+//  MVCArchitectureDemo
 //
 //  Created by Chandler De Angelis on 4/17/19.
 //  Copyright © 2019 Chandlerdea LLC. All rights reserved.
@@ -13,6 +13,8 @@ protocol TwitterClient: NetworkController {
     static var bearerToken: String { get }
     
     func searchTweets(query: String, session: URLSession, completion: @escaping (Result<[Tweet], Error>) -> Void)
+    
+    func fetchExtendedTweet(for tweet: Tweet, session: URLSession, completion: @escaping (Result<Tweet, Error>) -> Void)
 }
 
 extension TwitterClient {
@@ -24,9 +26,8 @@ extension TwitterClient {
     func searchTweets(query: String, session: URLSession = .shared, completion: @escaping (Result<[Tweet], Error>) -> Void) {
         let token: String = type(of: self).bearerToken
         let request: URLRequest = TwitterRequestBuilder().search(query: query)
-                                                         .setHeader(.authorization(token))
+                                                         .setAuthorizationToken(token)
                                                          .build()
-        print(request.url!.absoluteString)
         self.sendRequest(request, session) { (r: Result<TweetsContainer, Error>) in
             switch r {
             case .success(let container):
@@ -37,6 +38,18 @@ extension TwitterClient {
                 DispatchQueue.main.async {
                     completion(.failure(error))
                 }
+            }
+        }
+    }
+    
+    func fetchExtendedTweet(for tweet: Tweet, session: URLSession = .shared, completion: @escaping (Result<Tweet, Error>) -> Void) {
+        let token: String = type(of: self).bearerToken
+        let request: URLRequest = TwitterRequestBuilder().showTweet(tweet)
+                                                         .setAuthorizationToken(token)
+                                                         .build()
+        self.sendRequest(request, session) { (r: Result<Tweet, Error>) in
+            DispatchQueue.main.async {
+                completion(r)
             }
         }
     }

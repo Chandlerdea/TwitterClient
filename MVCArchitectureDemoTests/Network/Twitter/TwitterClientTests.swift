@@ -1,13 +1,13 @@
 //
 //  TwitterClientTests.swift
-//  ReactiveSwiftDemoTests
+//  MVCArchitectureDemoTests
 //
 //  Created by Chandler De Angelis on 4/17/19.
 //  Copyright © 2019 Chandlerdea LLC. All rights reserved.
 //
 
 import XCTest
-@testable import ReactiveSwiftDemo
+@testable import MVCArchitectureDemo
 
 private final class TwitterProtocol: URLProtocol {
     
@@ -21,11 +21,21 @@ private final class TwitterProtocol: URLProtocol {
     
     override func startLoading() {
         var contentLength: Int = 0
-        
-        if let jsonURL: URL = Bundle(for: type(of: self)).url(forResource: "twitter_search_iosdev_response", withExtension: "json"),
-            let payload: Data = try? Data(contentsOf: jsonURL) {
-            contentLength = payload.count
-            self.client?.urlProtocol(self, didLoad: payload)
+        if self.request.url?.absoluteString == "https://api.twitter.com/1.1/search/tweets.json?q=iosdev" {
+            if let jsonURL: URL = Bundle(for: type(of: self)).url(forResource: "twitter_search_iosdev_response", withExtension: "json"),
+                let payload: Data = try? Data(contentsOf: jsonURL) {
+                contentLength = payload.count
+                self.client?.urlProtocol(self, didLoad: payload)
+            }
+        } else if request.url?.absoluteString == "https://api.twitter.com/1.1/statuses/show.json?id=1117120457155547136&tweet_mode=extended" {
+            if let jsonURL: URL = Bundle(for: type(of: self)).url(forResource: "twitter_show_tweet_response", withExtension: "json"),
+                let payload: Data = try? Data(contentsOf: jsonURL) {
+                contentLength = payload.count
+                self.client?.urlProtocol(self, didLoad: payload)
+            }
+        } else {
+            self.client?.urlProtocolDidFinishLoading(self)
+            return
         }
         let response: HTTPURLResponse = HTTPURLResponse(
             url: self.request.url!,
@@ -85,6 +95,35 @@ class TwitterClientTests: XCTestCase {
                 XCTAssertEqual(mention?.id, 84176880)
                 XCTAssertEqual(mention?.handle, "_swolecat")
                 XCTAssertEqual(mention?.name, "koty")
+            case .failure(let error):
+                XCTFail(String(describing: error))
+            }
+            exception.fulfill()
+        }
+        self.waitForExpectations(timeout: 1.0, handler: .none)
+    }
+    
+    func testThatTweetCanBeFetched() {
+        let controller: TwitterClient = MockController()
+        let exception: XCTestExpectation = self.expectation(description: "fetch tweet")
+        let author: User = User(
+            id: 242833048,
+            name: "Eric Crichlow",
+            handle: "MisterEGC",
+            profileImageUrlString: "http://pbs.twimg.com/profile_images/1098753234074624000/bbAQD9rh_normal.jpg"
+        )
+        let tweet: Tweet = Tweet(
+            id: 1117120457155547136,
+            text: "I'll never understand why so many mobile devs use 3rd party libraries for back end communications.\n\nComplex auth? https://t.co/YTqfmf9aMA",
+            userMentions: [],
+            author: author,
+            createdAt: .none
+        )
+        controller.fetchExtendedTweet(for: tweet, session: self.mockURLSession) { (r: Result<Tweet, Error>) in
+            switch r {
+            case .success(let updatedTweet):
+                XCTAssertEqual(updatedTweet.id, tweet.id)
+                XCTAssertEqual(updatedTweet.fullText, "I’ll never understand why so many mobile devs use 3rd party libraries for back end communications.\n\nComplex auth scheme? Okay. Sure.\n\nBut basic auth?\n\nConnection code is not difficult. Stop importing big (bloated?) libraries to do it.\n\n#iOSDev #AndroidDev")
             case .failure(let error):
                 XCTFail(String(describing: error))
             }

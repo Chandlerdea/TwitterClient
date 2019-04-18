@@ -19,6 +19,16 @@ final class TwitterRequestBuilder: HTTPRequestBuilder {
         result.appendPathComponent("search")
         result.appendPathComponent("tweets.json")
         result.appendQueryItem(name: "q", value: query)
+//        result.appendQueryItem(name: "result_type", value: "popluar")
+        return result
+    }
+    
+    func showTweet(_ tweet: Tweet) -> TwitterRequestBuilder {
+        let result: TwitterRequestBuilder = self
+        result.appendPathComponent("statuses")
+        result.appendPathComponent("show.json")
+        result.appendQueryItem(name: "id", value: String(describing: tweet.id))
+        result.appendQueryItem(name: "tweet_mode", value: "extended")
         return result
     }
     

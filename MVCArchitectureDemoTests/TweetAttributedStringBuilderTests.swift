@@ -39,7 +39,7 @@ class TweetAttributedStringBuilderTests: XCTestCase {
             createdAt: .none
         )
         
-        let attrString: NSAttributedString = TweetAttributedStringBuilder(tweet: tweet).insertMentionAttributes().build()
+        let attrString: NSAttributedString? = TweetAttributedStringBuilder(tweet: tweet)?.insertMentionAttributes().build()
         let startIndex: String.Index = text.startIndex
         let mentionRanges: [StringRange] = [
             text.index(startIndex, offsetBy: 23)..<text.index(startIndex, offsetBy: 32),
@@ -51,8 +51,8 @@ class TweetAttributedStringBuilderTests: XCTestCase {
         for range in mentionRanges {
             let location: Int = text.distance(from: startIndex, to: range.lowerBound)
             var effectiveRange: NSRange = NSRange(location: location, length: text.count)
-            let attrs: [NSAttributedString.Key: Any] = attrString.attributes(at: location, effectiveRange: &effectiveRange)
-            XCTAssertEqual(attrs[.foregroundColor] as? UIColor, UIColor.blue)
+            let attrs: [NSAttributedString.Key: Any]? = attrString?.attributes(at: location, effectiveRange: &effectiveRange)
+            XCTAssertEqual(attrs?[.foregroundColor] as? UIColor, UIColor.blue)
         }
 
     }
@@ -74,7 +74,7 @@ class TweetAttributedStringBuilderTests: XCTestCase {
             createdAt: .none
         )
         
-        let attrString: NSAttributedString = TweetAttributedStringBuilder(tweet: tweet).insertHashtagAttributes().build()
+        let attrString: NSAttributedString? = TweetAttributedStringBuilder(tweet: tweet)?.insertHashtagAttributes().build()
         let startIndex: String.Index = text.startIndex
         let mentionRanges: [StringRange] = [
             text.index(startIndex, offsetBy: 32)..<text.index(startIndex, offsetBy: 40),
@@ -84,8 +84,8 @@ class TweetAttributedStringBuilderTests: XCTestCase {
         for range in mentionRanges {
             let location: Int = text.distance(from: startIndex, to: range.lowerBound)
             var effectiveRange: NSRange = NSRange(location: location, length: text.count)
-            let attrs: [NSAttributedString.Key: Any] = attrString.attributes(at: location, effectiveRange: &effectiveRange)
-            XCTAssertEqual(attrs[.foregroundColor] as? UIColor, UIColor.blue)
+            let attrs: [NSAttributedString.Key: Any]? = attrString?.attributes(at: location, effectiveRange: &effectiveRange)
+            XCTAssertEqual(attrs?[.foregroundColor] as? UIColor, UIColor.blue)
         }
     }
     
@@ -106,7 +106,7 @@ class TweetAttributedStringBuilderTests: XCTestCase {
             createdAt: .none
         )
         
-        let attrString: NSAttributedString = TweetAttributedStringBuilder(tweet: tweet).insertLinkAttributes().build()
+        let attrString: NSAttributedString? = TweetAttributedStringBuilder(tweet: tweet)?.insertLinkAttributes().build()
         let startIndex: String.Index = text.startIndex
         let mentionRanges: [StringRange] = [
             text.index(startIndex, offsetBy: 32)..<text.index(startIndex, offsetBy: 44),
@@ -116,8 +116,8 @@ class TweetAttributedStringBuilderTests: XCTestCase {
         for range in mentionRanges {
             let location: Int = text.distance(from: startIndex, to: range.lowerBound)
             var effectiveRange: NSRange = NSRange(location: location, length: text.count)
-            let attrs: [NSAttributedString.Key: Any] = attrString.attributes(at: location, effectiveRange: &effectiveRange)
-            XCTAssertEqual(attrs[.foregroundColor] as? UIColor, UIColor.blue)
+            let attrs: [NSAttributedString.Key: Any]? = attrString?.attributes(at: location, effectiveRange: &effectiveRange)
+            XCTAssertEqual(attrs?[.foregroundColor] as? UIColor, UIColor.blue)
         }
         
     }

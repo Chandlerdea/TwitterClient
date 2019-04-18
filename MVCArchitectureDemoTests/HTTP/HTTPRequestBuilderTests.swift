@@ -31,6 +31,14 @@ class HTTPRequestBuilderTests: XCTestCase {
         
     }
     
+    func testThatSettingAuthHeaderWorks() {
+        
+        let request: URLRequest = HTTPRequestBuilder(baseURL: self.baseURL).setAuthorizationToken("123").build()
+        
+        XCTAssertEqual(request.allHTTPHeaderFields?["Authorization"], "Bearer 123")
+        
+    }
+    
     func testSettingBodayDataWorks() {
         
         let body: Data = """

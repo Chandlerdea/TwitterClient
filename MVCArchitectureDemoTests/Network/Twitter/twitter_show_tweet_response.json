@@ -1,0 +1,109 @@
+{
+    "created_at": "Sat Apr 13 17:40:46 +0000 2019",
+    "id": 1117120457155547136,
+    "id_str": "1117120457155547136",
+    "full_text": "I\u2019ll never understand why so many mobile devs use 3rd party libraries for back end communications.\n\nComplex auth scheme? Okay. Sure.\n\nBut basic auth?\n\nConnection code is not difficult. Stop importing big (bloated?) libraries to do it.\n\n#iOSDev #AndroidDev",
+    "truncated": false,
+    "display_text_range": [
+        0,
+        255
+    ],
+    "entities": {
+        "hashtags": [
+            {
+                "text": "iOSDev",
+                "indices": [
+                    236,
+                    243
+                ]
+            },
+            {
+                "text": "AndroidDev",
+                "indices": [
+                    244,
+                    255
+                ]
+            }
+        ],
+        "symbols": [],
+        "user_mentions": [],
+        "urls": []
+    },
+    "source": "\u003ca href=\"http:\/\/twitter.com\/download\/iphone\" rel=\"nofollow\"\u003eTwitter for iPhone\u003c\/a\u003e",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+        "id": 242833048,
+        "id_str": "242833048",
+        "name": "Eric Crichlow",
+        "screen_name": "MisterEGC",
+        "location": "San Tan Valley, AZ",
+        "description": "Eyes on the prize. Not living to work, working to live. Coding for someone else (GM) while trying to build my own software empire in iOS, MacOS, tvOS, Android",
+        "url": "https:\/\/t.co\/Y4XStQab1z",
+        "entities": {
+            "url": {
+                "urls": [
+                    {
+                        "url": "https:\/\/t.co\/Y4XStQab1z",
+                        "expanded_url": "http:\/\/www.infusionsofgrandeur.com",
+                        "display_url": "infusionsofgrandeur.com",
+                        "indices": [
+                            0,
+                            23
+                        ]
+                    }
+                ]
+            },
+            "description": {
+                "urls": []
+            }
+        },
+        "protected": false,
+        "followers_count": 237,
+        "friends_count": 172,
+        "listed_count": 3,
+        "created_at": "Tue Jan 25 18:10:40 +0000 2011",
+        "favourites_count": 2389,
+        "utc_offset": null,
+        "time_zone": null,
+        "geo_enabled": true,
+        "verified": false,
+        "statuses_count": 885,
+        "lang": "en",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "C0DEED",
+        "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+        "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+        "profile_background_tile": false,
+        "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/1098753234074624000\/bbAQD9rh_normal.jpg",
+        "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/1098753234074624000\/bbAQD9rh_normal.jpg",
+        "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/242833048\/1550800054",
+        "profile_link_color": "1DA1F2",
+        "profile_sidebar_border_color": "C0DEED",
+        "profile_sidebar_fill_color": "DDEEF6",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "has_extended_profile": true,
+        "default_profile": true,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false,
+        "translator_type": "none"
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 0,
+    "favorite_count": 7,
+    "favorited": false,
+    "retweeted": false,
+    "lang": "en"
+}

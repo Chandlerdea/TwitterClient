@@ -17,9 +17,12 @@ final class TweetAttributedStringBuilder: AttributedstringBuilder {
     
     // MARK: - Init
     
-    init(tweet: Tweet) {
+    init?(tweet: Tweet) {
+        guard let text: String = tweet.text else {
+            return nil
+        }
         self.mentions = tweet.userMentions
-        super.init(text: tweet.text)
+        super.init(text: text)
     }
     
     // MARK: - Public Methods

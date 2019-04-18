@@ -18,12 +18,16 @@ final class FeedDataSource: NSObject, TwitterClient {
         return formatter
     }()
     
-    private(set) var tweets: [Tweet] = []
+    private var tweets: [Tweet] = []
     
     // MARK: - Public Methods
     
+    func registerCells(with tableView: UITableView) {
+        tableView.registerCellNibs([FeedTableViewCell.self])
+    }
+    
     func fetchTweets(_ completion: @escaping () -> Void) {
-        self.searchTweets(query: "iosdev") { (r: Result<[Tweet], Error>) in
+        self.searchTweets(query: "#iOSDev") { (r: Result<[Tweet], Error>) in
             switch r {
             case .success(let tweets):
                 self.tweets = tweets
@@ -32,6 +36,29 @@ final class FeedDataSource: NSObject, TwitterClient {
             }
             completion()
         }
+    }
+    
+}
+// MARK: - Collection
+extension FeedDataSource: Collection {
+    
+    var startIndex: Int {
+        return self.tweets.startIndex
+    }
+    
+    var endIndex: Int {
+        return self.tweets.endIndex
+    }
+    
+    subscript(position: Int) -> Tweet {
+        get {
+            return self.tweets[position]
+        }
+        set {}
+    }
+    
+    func index(after i: Int) -> Int {
+        return self.tweets.index(after: i)
     }
     
 }
@@ -47,9 +74,7 @@ extension FeedDataSource: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard case let cell as FeedTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell", for: indexPath) else {
-            return UITableViewCell()
-        }
+        let cell: FeedTableViewCell = tableView.dequeue(at: indexPath)
         let tweet: Tweet = self.tweets[indexPath.row]
         cell.nameLabel.text = tweet.author.name
         cell.handleLabel.text = "@\(tweet.author.handle)"
