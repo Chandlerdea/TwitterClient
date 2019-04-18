@@ -17,8 +17,8 @@ final class TweetAttributedStringBuilder: AttributedstringBuilder {
     
     // MARK: - Init
     
-    init?(tweet: Tweet) {
-        guard let text: String = tweet.text else {
+    init?(tweet: Tweet, showsExpanded: Bool) {
+        guard let text: String = showsExpanded ? tweet.fullText : tweet.text else {
             return nil
         }
         self.mentions = tweet.userMentions

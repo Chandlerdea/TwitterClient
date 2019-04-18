@@ -39,7 +39,7 @@ class TweetAttributedStringBuilderTests: XCTestCase {
             createdAt: .none
         )
         
-        let attrString: NSAttributedString? = TweetAttributedStringBuilder(tweet: tweet)?.insertMentionAttributes().build()
+        let attrString: NSAttributedString? = TweetAttributedStringBuilder(tweet: tweet, showsExpanded: false)?.insertMentionAttributes().build()
         let startIndex: String.Index = text.startIndex
         let mentionRanges: [StringRange] = [
             text.index(startIndex, offsetBy: 23)..<text.index(startIndex, offsetBy: 32),
@@ -74,7 +74,7 @@ class TweetAttributedStringBuilderTests: XCTestCase {
             createdAt: .none
         )
         
-        let attrString: NSAttributedString? = TweetAttributedStringBuilder(tweet: tweet)?.insertHashtagAttributes().build()
+        let attrString: NSAttributedString? = TweetAttributedStringBuilder(tweet: tweet, showsExpanded: false)?.insertHashtagAttributes().build()
         let startIndex: String.Index = text.startIndex
         let mentionRanges: [StringRange] = [
             text.index(startIndex, offsetBy: 32)..<text.index(startIndex, offsetBy: 40),
@@ -106,7 +106,7 @@ class TweetAttributedStringBuilderTests: XCTestCase {
             createdAt: .none
         )
         
-        let attrString: NSAttributedString? = TweetAttributedStringBuilder(tweet: tweet)?.insertLinkAttributes().build()
+        let attrString: NSAttributedString? = TweetAttributedStringBuilder(tweet: tweet, showsExpanded: false)?.insertLinkAttributes().build()
         let startIndex: String.Index = text.startIndex
         let mentionRanges: [StringRange] = [
             text.index(startIndex, offsetBy: 32)..<text.index(startIndex, offsetBy: 44),

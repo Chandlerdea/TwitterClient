@@ -37,19 +37,17 @@ struct Tweet: Decodable, Equatable {
     let createdAt: Date?
     
     var attributedText: NSAttributedString? {
-        return TweetAttributedStringBuilder(tweet: self)?.insertMentionAttributes()
-                                                         .insertHashtagAttributes()
-                                                         .insertLinkAttributes()
-                                                         .build()
+        return TweetAttributedStringBuilder(tweet: self, showsExpanded: false)?.insertMentionAttributes()
+                                                                               .insertHashtagAttributes()
+                                                                               .insertLinkAttributes()
+                                                                               .build()
     }
     
     var attributedFullText: NSAttributedString? {
-        return self.fullText.flatMap(NSAttributedString.init(string:))
-        /*
-        return TweetAttributedStringBuilder(tweet: self)?.insertMentionAttributes()
-                                                         .insertHashtagAttributes()
-                                                         .insertLinkAttributes()
-                                                         .build()*/
+        return TweetAttributedStringBuilder(tweet: self, showsExpanded: true)?.insertMentionAttributes()
+                                                                              .insertHashtagAttributes()
+                                                                              .insertLinkAttributes()
+                                                                              .build()
     }
     
     enum CodingKeys: String, CodingKey {
