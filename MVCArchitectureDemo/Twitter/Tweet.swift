@@ -31,6 +31,8 @@ struct Tweet: Decodable, Equatable {
     
     let id: Int
     let text: String?
+    let favoriteCount: Int
+    let retweetCount: Int
     var fullText: String?
     let userMentions: [UserMention]
     let author: User
@@ -54,15 +56,19 @@ struct Tweet: Decodable, Equatable {
         case id
         case text
         case fullText = "full_text"
+        case favoriteCount = "favorite_count"
+        case retweetCount = "retweet_count"
         case author = "user"
         case createdAtString = "created_at"
         case entities
         case userMentions = "user_mentions"
     }
     
-    init(id: Int, text: String, userMentions: [UserMention], author: User, createdAt: Date?) {
+    init(id: Int, text: String, favoriteCount: Int = 0, retweetCount: Int = 0, userMentions: [UserMention] = [], author: User, createdAt: Date? = nil) {
         self.id = id
         self.text = text
+        self.favoriteCount = favoriteCount
+        self.retweetCount = retweetCount
         self.userMentions = userMentions
         self.author = author
         self.createdAt = createdAt
@@ -75,6 +81,8 @@ struct Tweet: Decodable, Equatable {
         self.id = try container.decode(Int.self, forKey: .id)
         self.text = try container.decodeIfPresent(String.self, forKey: .text)
         self.fullText = try container.decodeIfPresent(String.self, forKey: .fullText)
+        self.favoriteCount = try container.decode(Int.self, forKey: .favoriteCount)
+        self.retweetCount = try container.decode(Int.self, forKey: .retweetCount)
         self.author = try container.decode(User.self, forKey: .author)
         
         let entitiesContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .entities)
