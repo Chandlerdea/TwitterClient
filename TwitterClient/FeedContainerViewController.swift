@@ -1,5 +1,5 @@
 //
-//  FeedCoordinatingController.swift
+//  FeedContainerViewController.swift
 //  TwitterClient
 //
 //  Created by Chandler De Angelis on 4/18/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class FeedCoordinatingController: UIViewController {
+final class FeedContainerViewController: UIViewController {
 
     // MARK: - Properties
     
@@ -36,7 +36,7 @@ final class FeedCoordinatingController: UIViewController {
     
 }
 // MARK: - Private
-private extension FeedCoordinatingController {
+private extension FeedContainerViewController {
     
     func addNavigationController() {
         self._navigationController.willMove(toParent: self)
@@ -47,7 +47,7 @@ private extension FeedCoordinatingController {
     
 }
 // MARK: - FeedViewDelegate
-extension FeedCoordinatingController: FeedViewDelegate {
+extension FeedContainerViewController: FeedViewDelegate {
     
     func didSelect(tweet: Tweet, sender: FeedViewController) {
         let detailViewController: DetailViewController = DetailViewController(tweet: tweet)
